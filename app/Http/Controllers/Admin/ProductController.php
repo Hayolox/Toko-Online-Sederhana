@@ -50,7 +50,7 @@ class ProductController extends Controller
         $aatr = $request->all();
         $aatr['image'] = $request->file('image')->store('asset/product', 'public');
         product::create($aatr);
-        return back();
+        return back()->withToastSuccess('Data Berhasil Ditambahkan');;
     }
 
     /**
@@ -98,7 +98,7 @@ class ProductController extends Controller
             $aatr['image'] = $request->file('image')->store('asset/product', 'public');
         }
         $item->update($aatr);
-        return back();
+        return back()->withToastSuccess('Data Berhasil Diupdate');
     }
 
     /**
@@ -112,6 +112,6 @@ class ProductController extends Controller
         $item = product::findOrfail($id);
         Storage::disk('local')->delete('public/'. $item->image);
         $item->delete();
-        return back()->with('toast_success', 'Data Berhasil Di Hapus');
+        return back()->withToastSuccess('Data Berhasil Dihapus');
     }
 }
