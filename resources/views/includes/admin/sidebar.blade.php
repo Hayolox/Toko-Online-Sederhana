@@ -12,7 +12,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('Product.index') }}">
             <i class="fab fa-product-hunt"></i>
             <span>Tambah Product</span></a>
     </li>
