@@ -14,11 +14,11 @@
         <div class="card-body">
             <div class="col-12 mb-3 d-flex">
                     <div>
-                        <a href="" class="btn btn-info">Tambah Product</a>
+                        <a href="{{ route('Product.create') }}" class="btn btn-info">Tambah Product</a>
                     </div>
 
                     <div style="margin-left: 520px">
-                        <form action="" class="d-inline-block form-inline">
+                        <form action="{{ route('Product.index') }}" class="d-inline-block form-inline">
                             <input class="form-control mr-sm-2" name="search" type="text" placeholder="Nama Obat" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0 d-inline-block" type="submit">Search</button>
                         </form>
@@ -37,26 +37,29 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-            
-                    <tbody>     
-                        <td>1</td>
+                    
+                    @foreach ($products as $data => $item)
+                    <tbody>  
+                        <td>{{ $products->firstItem() + $data }}</td>
                         <td>
-                            <img src="" alt="product">
+                            <img src="{{ Storage::url($item->image) }}" style="height: 100px" alt="product">
                         </td>
-                        <td>Ini Nama Obat</td>
-                        <td>180</td>
-                        <td>Rp 180.000</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->stok }}</td>
+                        <td>{{ $item->price }}</td>
                         <td>
-                            <a href="" class="btn btn-info">Edit</a>
-                            <form action="" class="d-inline" method="POST">
+                            <a href="{{ route('Product.edit',$item->id) }}" class="btn btn-info">Edit</a>
+                            <form action="{{ route('Product.destroy',$item->id) }}" class="d-inline" method="POST">
                                 @csrf
+                                @method('delete')
                                 <button class="btn btn-danger">Delete</button>
                             </form>
-                        </td>
-
+                        </td> 
                     </tbody>
+                    @endforeach  
                 </table>
                <div class="d-flex justify-content-center mt-4">
+                {{ $products->links() }}
                </div>
             </div>
         </div>

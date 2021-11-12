@@ -6,12 +6,12 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item {{ (Request()->is('auth')) ? 'active' : '' }}">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ (Request()->is('auth/Product*')) ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('Product.index') }}">
             <i class="fab fa-product-hunt"></i>
             <span>Tambah Product</span></a>

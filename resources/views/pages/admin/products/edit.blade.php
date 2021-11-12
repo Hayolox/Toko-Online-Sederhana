@@ -10,10 +10,13 @@
             <!-- Card Header - Dropdown -->
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Data Guru Muhammadiyah</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Edit Data Guru Muhammadiyah</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                    <div class="justify-content-center">
+                        <img src="{{ Storage::url($item->image) }}" style="height: 300px" alt="Foto" class="rounded mx-auto d-block">
+                    </div>
                     @if ($errors->any())
                     <div class="alert alert-danger mt-2 mb-2">
                         <ul>
@@ -23,9 +26,9 @@
                         </ul>
                     </div>
                     @endif
-                    <form action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('Product.update',$item->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
+                        @method('PUT')
                         <div class="form-group">
                             <label for="image">Foto Obat</label>
                             <input type="file" value="" class="form-control-file" id="foto" name="image">
@@ -34,17 +37,17 @@
 
                         <div class="form-group">
                             <label for="name">Nama Obat</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name">
+                            <input type="text"  name="name" value="{{ $item->name }}" class="form-control" id="name">
                         </div>
 
                         <div class="form-group">
                             <label for="stok">Stok Obat</label>
-                            <input type="number" name="stok" value="{{ old('stok') }}" class="form-control" id="stok">
+                            <input type="number" name="stok" value="{{ $item->stok }}" class="form-control" id="stok">
                         </div>
 
                         <div class="form-group">
                             <label for="price">Harga Obat</label>
-                            <input type="text" name="price" value="{{ old('price') }}" class="form-control" id="price">
+                            <input type="text" name="price" value="{{ $item->price }}" class="form-control" id="price">
                         </div>
 
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -12,9 +14,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pages.admin.products.index');
+        $products = product::latest()->paginate(10);
+        if($request->has('search')){
+            $products = product::where('name', 'LIKE', '%' .$request->search. '%')->paginate();
+        };  
+        return view('pages.admin.products.index',compact('products'));
     }
 
     /**
@@ -24,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.products.create');
     }
 
     /**
@@ -35,7 +41,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:225',
+            'price' => 'required',
+            'stok' => 'required',
+            'image' => 'required|mimes:png,jpg'
+        ]);
+        $aatr = $request->all();
+        $aatr['image'] = $request->file('image')->store('asset/product', 'public');
+        product::create($aatr);
+        return back();
     }
 
     /**
@@ -57,7 +72,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = product::findOrFail($id);
+        return view('pages.admin.products.edit', compact('item'));
     }
 
     /**
@@ -69,7 +85,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:225',
+            'price' => 'required',
+            'stok' => 'required',
+            'image' => 'mimes:png,jpg'
+        ]);
+        $aatr = $request->all();
+        $item = product::findOrFail($id);
+        if($request->file('foto')){
+            Storage::disk('local')->delete('public/'. $item->image);
+            $aatr['image'] = $request->file('image')->store('asset/product', 'public');
+        }
+        $item->update($aatr);
+        return back();
     }
 
     /**
@@ -80,6 +109,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = product::findOrfail($id);
+        Storage::disk('local')->delete('public/'. $item->foto);
+        $item->delete();
+        return back()->with('toast_success', 'Data Berhasil Di Hapus');
     }
 }
