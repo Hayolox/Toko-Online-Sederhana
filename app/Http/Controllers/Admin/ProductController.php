@@ -110,7 +110,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $item = product::findOrfail($id);
-        Storage::disk('local')->delete('public/'. $item->foto);
+        Storage::disk('local')->delete('public/'. $item->image);
         $item->delete();
         return back()->with('toast_success', 'Data Berhasil Di Hapus');
     }
