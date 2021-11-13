@@ -10,7 +10,7 @@
             <!-- Card Header - Dropdown -->
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Product</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Edit Member</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -23,28 +23,24 @@
                         </ul>
                     </div>
                     @endif
-                    <form action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('Member.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
-                        <div class="form-group">
-                            <label for="image">Foto Obat</label>
-                            <input type="file" value="" class="form-control-file" id="foto" name="image">
-                        </div>
+                        @method('PUT')
 
 
                         <div class="form-group">
-                            <label for="name">Nama Obat</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name">
+                            <label for="name">Nama Member</label>
+                            <input type="text" name="name" value="{{ $item->name }}" class="form-control" id="name">
                         </div>
 
                         <div class="form-group">
-                            <label for="stok">Stok Obat</label>
-                            <input type="number" name="stok" value="{{ old('stok') }}" class="form-control" id="stok">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" value="{{ $item->email }}" class="form-control" id="email">
                         </div>
 
                         <div class="form-group">
-                            <label for="price">Harga Obat</label>
-                            <input type="number" name="price" value="{{ old('price') }}" class="form-control" id="price">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" value="{{ old('password') }}" class="form-control" id="password">
                         </div>
 
 

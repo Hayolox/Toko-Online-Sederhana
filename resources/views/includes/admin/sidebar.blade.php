@@ -17,6 +17,12 @@
             <span>Tambah Product</span></a>
     </li>
 
+    <li class="nav-item {{ (Request()->is('auth/Member*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('Member.index') }}">
+            <i class="fas fa-user-friends"></i>
+            <span>Tambah Member</span></a>
+    </li>
+
 
 
 </ul>

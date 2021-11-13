@@ -10,7 +10,7 @@
             <!-- Card Header - Dropdown -->
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Edit Data Guru Muhammadiyah</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Edit Member</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -47,7 +47,7 @@
 
                         <div class="form-group">
                             <label for="price">Harga Obat</label>
-                            <input type="text" name="price" value="{{ $item->price }}" class="form-control" id="price">
+                            <input type="number" name="price" value="{{ $item->price }}" class="form-control" id="price">
                         </div>
 
 
