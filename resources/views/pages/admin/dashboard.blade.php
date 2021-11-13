@@ -16,7 +16,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Transaksi Berhasil</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $sukses }}</div>
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                     Transaksi Gagal</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $gagal }}</div>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                     Banyak Antrian </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $antrian }}</div>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                     Total Pendapatan </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">120000</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">Rp {{ number_format($total_price, 0, ".", ".") }}</div>
                             </div>
                         </div>
                     </div>

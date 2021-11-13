@@ -11,6 +11,7 @@
             <span>Dashboard</span></a>
     </li>
 
+    @if (Auth::user()->roles == 'superadmin')
     <li class="nav-item {{ (Request()->is('auth/Product*')) ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('Product.index') }}">
             <i class="fab fa-product-hunt"></i>
@@ -22,6 +23,7 @@
             <i class="fas fa-user-friends"></i>
             <span>Tambah Member</span></a>
     </li>
+    @endif
 
     <li class="nav-item {{ (Request()->is('auth/Queue*')) ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('queue') }}">
