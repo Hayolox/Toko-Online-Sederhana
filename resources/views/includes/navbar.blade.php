@@ -37,7 +37,7 @@
              alt=""
              class="rounded-circle mr-2 profile-picture"
            />
-           Hi, Akil
+           Hi, {{ Auth::user()->name }}
          </a>
          <div class="dropdown-menu">
            <a href="/dashboard.html" class="dropdown-item">Dashboard</a>
@@ -48,18 +48,19 @@
            <a href="/" class="dropdown-item">Logout</a>
          </div>
        </li>
-       <li class="nav-item">
-         <a href="#" class="nav-link d-inline-block mt-2">
-           <img src="/images/icon-cart-empty.svg" alt="" />
-         </a>
-       </li>
+
+       @php
+       $carts = \App\Models\cart::where('user_id', Auth::user()->id)->count();
+      @endphp
+
+      @if($carts > 0)
+          <img src="/images/icon-cart-filled.svg" alt="" />
+          <div class="card-badge">{{ $carts }}</div>
+      @else
+          <img src="/images/icon-cart-empty.svg" alt="" />
+      @endif
      </ul>
-     <li class="nav-item">
-       <a class="nav-link d-inline-block mt-2" href="#">
-         <img src="/images/icon-cart-filled.svg" alt="" />
-         <div class="cart-badge">3</div>
-       </a>
-     </li>
+   
 
      <ul class="navbar-nav d-block d-lg-none">
        <li class="nav-item">

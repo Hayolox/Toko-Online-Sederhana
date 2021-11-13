@@ -33,10 +33,10 @@
                   ></div>
                 </div>
                 <div class="products-text">
-                  Apple Watch 4
+                {{ $item->name }} 
                 </div>
                 <div class="products-price">
-                  $890
+                Harga :  Rp {{ number_format($item->price, 0, ".", ".") }} <br> Stok : {{ $item->stok }}
                 </div>
               </a>
             </div>
