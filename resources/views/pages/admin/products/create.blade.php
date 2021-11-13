@@ -47,6 +47,12 @@
                             <input type="number" name="price" value="{{ old('price') }}" class="form-control" id="price">
                         </div>
 
+                        <div class="form-group mt-2">
+                            <label for="description">Diskripsi Obat</label>
+                            <textarea class="form-control" id="editor" name="description" rows="3">{{ old('description') }}</textarea>
+                        </div>
+
+
 
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
@@ -56,5 +62,10 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace( 'editor' );
+</script>
 
 @endsection
