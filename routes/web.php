@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AddCartController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +23,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('Login', [AuthController::class, 'index'])->name('login');
 Route::post('Login/Load', [AuthController::class, 'login'])->name('login-load');
 Route::get ('Logout', [AuthController::class, 'logout'])->name('logout');
+Route::get ('Logout-Cart', [AuthController::class, 'logoutcart'])->name('logout-cart');
 
 Route::middleware('auth')->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/Cart', [CartController::class, 'index'])->name('cart');
+    Route::post('/checkout', [CartController::class, 'transaction'])->name('checkout');
+    Route::get('/Cart-remove/{id}', [CartController::class,'delete'])->name('cart-delete');
+    Route::post('/Add-Cart/{id}', [AddCartController::class, 'add'])->name('add-cart');
     Route::get('/Detail/{id}', [DetailController::class, 'index'])->name('detail');
 });
 

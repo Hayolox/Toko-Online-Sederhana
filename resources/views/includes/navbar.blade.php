@@ -54,10 +54,14 @@
       @endphp
 
       @if($carts > 0)
-          <img src="/images/icon-cart-filled.svg" alt="" />
-          <div class="card-badge">{{ $carts }}</div>
+     
+        <a class="nav-link d-inline-block" href="{{ route('cart') }}">
+          <img src="{{ asset('/images/icon-cart-filled.svg') }}" alt="" />
+          <div class="cart-badge">{{ $carts }}</div>
+        </a>
+
       @else
-          <img src="/images/icon-cart-empty.svg" alt="" />
+         <a href="{{ route('cart') }}"> <img src="{{ asset('/images/icon-cart-empty.svg') }}" alt="" /></a>
       @endif
      </ul>
    

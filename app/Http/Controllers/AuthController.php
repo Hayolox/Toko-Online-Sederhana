@@ -30,4 +30,10 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function logoutcart()
+    {
+        Auth::logout();
+        return redirect()->route('login')->withToastSuccess('Silahkan tunggu nama anda di panggil');;;
+    }
 }

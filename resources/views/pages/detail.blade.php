@@ -42,11 +42,15 @@
               <div class="price">{{ number_format($item->price, 0, ".", ".") }}</div>
             </div>
             <div class="col-lg-2" data-aos="zoom-in">
-              <a
-                class="btn btn-success nav-link px-4 text-white btn-block mb-3"
-                href="/cart.html"
-                >Add to Cart</a
-              >
+              <form action="{{ route('add-cart', $item->id) }}" method="POST">
+                @csrf
+                <button
+                  type="submit"
+                  class="btn btn-success px-4 text-white btn-block mb-3"
+                >
+                  Add to Cart
+                </button>
+              </form>
             </div>
           </div>
         </div>
