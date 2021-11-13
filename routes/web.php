@@ -4,6 +4,7 @@ use App\Http\Controllers\AddCartController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailController;
@@ -39,4 +40,10 @@ Route::prefix('auth')->middleware(['auth','admin'])->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/Product', ProductController::class);
     Route::resource('/Member', MemberController::class);
+    Route::get('/Queue', [TransactionController::class, 'index'])->name('queue');
+    Route::get('/Transaction-Sukses', [TransactionController::class, 'transaksisukses'])->name('transaction-sukses');
+    Route::get('/Transaction-Gagal', [TransactionController::class, 'transaksigagal'])->name('transaction-gagal');
+    Route::get('/Queue/{id}', [TransactionController::class, 'detail'])->name('queue-detail');
+    Route::get('/Queue/Sukses/{id}', [TransactionController::class, 'sukses'])->name('queue-sukses');
+    Route::get('/Queue/Batalkan/{id}', [TransactionController::class, 'batal'])->name('queue-batal');
 });

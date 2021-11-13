@@ -23,6 +23,24 @@
             <span>Tambah Member</span></a>
     </li>
 
+    <li class="nav-item {{ (Request()->is('auth/Queue*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('queue') }}">
+            <i class="fas fa-cart-plus"></i>
+            <span>Antrian</span></a>
+    </li>
+
+    <li class="nav-item {{ (Request()->is('auth/Transaction-Sukses')) ? 'active' : '' }} ">
+        <a class="nav-link" href="{{ route('transaction-sukses') }}">
+            <i class="fas fa-check-circle"></i>
+            <span>Transaksi Sukses</span></a>
+    </li>
+
+    <li class="nav-item  {{ (Request()->is('auth/Transaction-Gagal')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('transaction-gagal') }}">
+            <i class="fas fa-backspace"></i>
+            <span>Transaksi Gagal</span></a>
+    </li>
+
 
 
 </ul>
