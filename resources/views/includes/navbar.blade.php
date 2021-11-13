@@ -18,7 +18,7 @@
    <div class="collapse navbar-collapse" id="navbarResponsive">
      <ul class="navbar-nav ml-auto">
        <li class="nav-item">
-         <a href="/index.html" class="nav-link">Home</a>
+         <a href="{{ route('home') }}" class="nav-link">Home</a>
        </li>
      </ul>
 
@@ -61,19 +61,19 @@
         </a>
 
       @else
-         <a href="{{ route('cart') }}"> <img src="{{ asset('/images/icon-cart-empty.svg') }}" alt="" /></a>
+         <a href="{{ route('cart') }}" class="nav-link d-inline-block"> <img src="{{ asset('/images/icon-cart-empty.svg') }}" alt="" /></a>
       @endif
      </ul>
    
 
      <ul class="navbar-nav d-block d-lg-none">
        <li class="nav-item">
-         <a href="#" class="nav-link">
+         <a href="{{ route('cart') }}" class="nav-link">
            Hi, {{ Auth::user()->name }}
          </a>
        </li>
        <li class="nav-item">
-         <a href="#" class="nav-link d-inline-block">
+         <a href="{{ route('cart') }}" class="nav-link d-inline-block">
            Cart
          </a>
        </li>
