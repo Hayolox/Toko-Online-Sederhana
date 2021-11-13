@@ -20,6 +20,9 @@
        <li class="nav-item">
          <a href="{{ route('home') }}" class="nav-link">Home</a>
        </li>
+       <li class="nav-item">
+        <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+      </li>
      </ul>
 
      <!-- Desktop Menu -->
@@ -39,14 +42,6 @@
            />
            Hi, {{ Auth::user()->name }}
          </a>
-         <div class="dropdown-menu">
-           <a href="/dashboard.html" class="dropdown-item">Dashboard</a>
-           <a href="/dashboard-account.html" class="dropdown-item"
-             >Settings</a
-           >
-           <div class="dropdown-divider"></div>
-           <a href="/" class="dropdown-item">Logout</a>
-         </div>
        </li>
 
        @php
