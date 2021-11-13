@@ -88,11 +88,15 @@
                 <div class="product-subtitle">Total</div>
               </div>
               <div class="col-8 col-md-3">
+                  @if ($count > 0)
                   <form action="{{ route('checkout') }}" method="POST">
-                      @csrf
-                      <input type="hidden" name="total_price" value="{{ $totalPrice }}">
-                      <button type="submit" class="btn btn-success mt-4 px-4 btn-block" onclick="return confirm('Yakin untuk checkout?')"> Checkout Now</button>
+                    @csrf
+                    <input type="hidden" name="total_price" value="{{ $totalPrice }}">
+                    <button type="submit" class="btn btn-success mt-4 px-4 btn-block" onclick="return confirm('Yakin untuk checkout?')"> Checkout Now</button>
                   </form>
+                  @else
+                    <button type="submit" class="btn btn-success mt-4 px-4 btn-block"> Pembelian Kosong</button>    
+                  @endif
               </div>
             </div>
           </div>
