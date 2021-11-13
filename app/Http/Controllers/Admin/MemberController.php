@@ -14,9 +14,12 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $Members = User::where('roles', 'member')->paginate(10);
+        if($request->has('search')){
+            $Members = User::where('name', 'LIKE', '%' .$request->search. '%')->where('roles', 'member')->paginate();
+        };  
         return view('pages.admin.member.index', compact('Members'));
     }
 

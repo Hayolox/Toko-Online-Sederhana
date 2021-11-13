@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $Products = product::latest()->paginate(10);
+        if($request->has('search')){
+            $Products = product::where('name', 'LIKE', '%' .$request->search. '%')->paginate();
+        };  
         return view('pages.home', compact('Products'));
     }
 }

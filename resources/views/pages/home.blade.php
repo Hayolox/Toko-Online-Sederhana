@@ -1,15 +1,22 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
+
      <!-- Page Content -->
      <div class="page-content page-home">
-     
-     
         <section class="store-new-products">
           <div class="container">
             <div class="row">
               <div class="col-12" data-aos="fade-up">
                 <h5>Pilih Obat</h5>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-12 d-flex justify-content-end">
+                <form action="{{ route('home') }}"  class="form-inline">
+                  <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search Nama Obat" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
               </div>
             </div>
             <div class="row">
