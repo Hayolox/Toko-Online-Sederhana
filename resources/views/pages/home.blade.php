@@ -19,7 +19,7 @@
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <a class="component-products d-block" href="/details.html">
+              <a class="component-products d-block" href="{{ route('detail', $item->id) }}">
                 <div class="products-thumbnail">
                   <div
                     class="products-image"
@@ -36,7 +36,7 @@
                 {{ $item->name }} 
                 </div>
                 <div class="products-price">
-                Harga :  Rp {{ number_format($item->price, 0, ".", ".") }} <br> Stok : {{ $item->stok }}
+                Harga :  Rp {{ number_format($item->price, 0, ".", ".") }} <br> Stok Obat : {{ $item->stok }}
                 </div>
               </a>
             </div>

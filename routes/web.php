@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ Route::get ('Logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/Detail/{id}', [DetailController::class, 'index'])->name('detail');
 });
 
 Route::prefix('auth')->middleware(['auth','admin'])->group(function(){
