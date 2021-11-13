@@ -93,7 +93,7 @@ class ProductController extends Controller
         ]);
         $aatr = $request->all();
         $item = product::findOrFail($id);
-        if($request->file('foto')){
+        if($request->file('image')){
             Storage::disk('local')->delete('public/'. $item->image);
             $aatr['image'] = $request->file('image')->store('asset/product', 'public');
         }
