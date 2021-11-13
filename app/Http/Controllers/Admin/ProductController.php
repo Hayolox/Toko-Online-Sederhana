@@ -45,7 +45,8 @@ class ProductController extends Controller
             'name' => 'required|max:225',
             'price' => 'required',
             'stok' => 'required',
-            'image' => 'required|mimes:png,jpg'
+            'image' => 'required|mimes:png,jpg',
+            'desctiption' => 'required',
         ]);
         $aatr = $request->all();
         $aatr['image'] = $request->file('image')->store('asset/product', 'public');
@@ -89,7 +90,8 @@ class ProductController extends Controller
             'name' => 'required|max:225',
             'price' => 'required',
             'stok' => 'required',
-            'image' => 'mimes:png,jpg'
+            'image' => 'mimes:png,jpg',
+            'desctiption' => 'required',
         ]);
         $aatr = $request->all();
         $item = product::findOrFail($id);

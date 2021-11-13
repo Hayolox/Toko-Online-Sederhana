@@ -50,6 +50,11 @@
                             <input type="number" name="price" value="{{ $item->price }}" class="form-control" id="price">
                         </div>
 
+                        <div class="form-group mt-2">
+                            <label for="desctiption">Diskripsi Obat</label>
+                            <textarea class="form-control" id="editor" name="desctiption" rows="3">{!! $item->desctiption !!}</textarea>
+                        </div>
+
 
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
@@ -59,5 +64,12 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+<!-- /.container-fluid -->
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace( 'editor' );
+</script>
+
 
 @endsection

@@ -48,8 +48,8 @@
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="description">Diskripsi Obat</label>
-                            <textarea class="form-control" id="editor" name="description" rows="3">{{ old('description') }}</textarea>
+                            <label for="desctiption">Diskripsi Obat</label>
+                            <textarea class="form-control" id="editor" name="desctiption" rows="3">{{ old('desctiption') }}</textarea>
                         </div>
 
 
