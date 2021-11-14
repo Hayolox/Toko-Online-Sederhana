@@ -43,11 +43,13 @@ class MemberController extends Controller
     {
         $request->validate([
             'email' => 'required|unique:users,email',
-            'name' => 'required|max:225'
+            'name' => 'required|max:225',
+            'password' => 'required'
         ],[
             'email.unique' => 'Email sudah di pakai',
             'name.required' => 'Nama tidak boleh kosong',
-            'name.max' => 'Nama maksimal 225 karakter'
+            'name.max' => 'Nama maksimal 225 karakter',
+            'password.required' => 'Password tidak boleh kosong'
         ]);
         User::create([
             'name' => $request->name,
@@ -103,6 +105,7 @@ class MemberController extends Controller
         $item = User::where('roles', 'member')->findOrfail($id);
         $request->validate([
             'email' => 'unique:users,email,'.$item->id,
+            'name' => 'required|max:225',
         ],[
             'email.unique' => 'Email sudah di pakai',
         ]);
