@@ -18,7 +18,8 @@ class TransactionController extends Controller
     public function detail($id)
     {
         $data = TransactionDetail::with(['product'])->where('transaction_id', $id)->paginate(10);
-        return view('pages.admin.queue.detail', compact('data'));
+        $item = transaction::with(['user'])->where('transaction_status', 'ANTRIAN')->where('id', $id)->firstOrFail();
+        return view('pages.admin.queue.detail', compact('data','item'));
     }
 
     public function sukses($id)
@@ -27,7 +28,7 @@ class TransactionController extends Controller
         $item->update([
             'transaction_status' => 'SUKSES',
         ]);
-        return back()->withToastSuccess('Transaksi Sukses');
+        return redirect()->route('queue')->withToastSuccess('Transaksi Sukses');
     }
 
     public function batal($id)

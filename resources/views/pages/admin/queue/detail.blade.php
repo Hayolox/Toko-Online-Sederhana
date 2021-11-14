@@ -14,6 +14,9 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                    <div>
+                        <a href="{{ route('queue-sukses', $item->id) }}" onclick="return confirm('Yakin untuk sukseskan transaksi?')" class="btn btn-primary mb-3">Sukses</a>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
