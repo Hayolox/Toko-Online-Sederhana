@@ -18,7 +18,7 @@ class TransactionController extends Controller
     public function detail($id)
     {
         $data = TransactionDetail::with(['product'])->where('transaction_id', $id)->paginate(10);
-        $item = transaction::with(['user'])->where('transaction_status', 'ANTRIAN')->where('id', $id)->firstOrFail();
+        $item = transaction::with(['user'])->where('id', $id)->firstOrFail();
         return view('pages.admin.queue.detail', compact('data','item'));
     }
 

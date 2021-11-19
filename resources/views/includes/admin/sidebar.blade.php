@@ -25,7 +25,7 @@
     </li>
     @endif
 
-    <li class="nav-item {{ (Request()->is('auth/Queue*')) ? 'active' : '' }}">
+    <li class="nav-item {{ (Request()->is('auth/Queue')) ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('queue') }}">
             <i class="fas fa-cart-plus"></i>
             <span>Antrian</span></a>
