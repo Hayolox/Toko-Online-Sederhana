@@ -14,9 +14,11 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                    @if ($item->transaction_status == 'ANTRIAN')
                     <div>
                         <a href="{{ route('queue-sukses', $item->id) }}" onclick="return confirm('Yakin untuk sukseskan transaksi?')" class="btn btn-primary mb-3">Sukses</a>
                     </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -27,9 +29,9 @@
                                     <th>Harga</th>
                                 </tr>
                             </thead>
-                            
+
                             @foreach ($data as $aatr => $item)
-                            <tbody>  
+                            <tbody>
                                 <td>{{ $data->firstItem() + $aatr }}</td>
                                 <td>
                                     <img src="{{ Storage::url($item->product->image) }}" style="height: 100px" alt="product">
@@ -37,7 +39,7 @@
                                 <td>{{ $item->product->name }}</td>
                                 <td>Rp {{ number_format($item->product->price, 0, ".", ".") }}</td>
                             </tbody>
-                            @endforeach  
+                            @endforeach
                         </table>
                        <div class="d-flex justify-content-center mt-4">
                         {{ $data->links() }}
@@ -49,5 +51,5 @@
     </div>
 </div>
 <!-- /.container-fluid -->
- 
+
 @endsection

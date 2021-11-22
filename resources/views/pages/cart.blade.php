@@ -34,7 +34,7 @@
                   <thead>
                     <tr>
                       <th scope="col">Image</th>
-                      <th scope="col">Nama Obat &amp; Seller</th>
+                      <th scope="col">Nama Obat</th>
                       <th scope="col">Harga</th>
                       <th scope="col">Menu</th>
                     </tr>
@@ -65,7 +65,7 @@
                   </tr>
                   @php $totalPrice += $item->product->price @endphp
                    @endforeach
-                   
+
                   </tbody>
                 </table>
               </div>
@@ -95,11 +95,11 @@
                     <button type="submit" class="btn btn-success mt-4 px-4 btn-block" onclick="return confirm('Yakin untuk checkout?')"> Checkout Now</button>
                   </form>
                   @else
-                    <button type="submit" class="btn btn-success mt-4 px-4 btn-block"> Pembelian Kosong</button>    
+                    <button type="submit" class="btn btn-success mt-4 px-4 btn-block"> Pembelian Kosong</button>
                   @endif
               </div>
             </div>
           </div>
         </section>
-      </div>   
+      </div>
 @endsection
