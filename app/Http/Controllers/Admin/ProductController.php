@@ -19,7 +19,7 @@ class ProductController extends Controller
         $products = product::latest()->paginate(10);
         if($request->has('search')){
             $products = product::where('name', 'LIKE', '%' .$request->search. '%')->paginate();
-        };  
+        };
         return view('pages.admin.products.index',compact('products'));
     }
 
