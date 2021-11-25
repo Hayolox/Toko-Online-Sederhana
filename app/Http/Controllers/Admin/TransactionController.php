@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\product;
 use App\Models\transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
@@ -37,6 +38,15 @@ class TransactionController extends Controller
         $item->update([
             'transaction_status' => 'BATAL',
         ]);
+        $details = TransactionDetail::where('transaction_id', $item->id)->get();
+        foreach ($details as $item)
+        {
+            $product = product::where('id', $item->product_id)->firstOrFail();
+            $stok = $product->stok + 1;
+            $product->update([
+                'stok' => $stok,
+            ]);
+        }
         return back()->withToastSuccess('Transaksi Dibatalkan');
     }
 
