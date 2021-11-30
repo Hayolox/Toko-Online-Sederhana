@@ -42,7 +42,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:225',
+            'name' => 'required|max:225|unique:products',
             'price' => 'required',
             'stok' => 'required',
             'image' => 'required|mimes:png,jpg',
@@ -87,7 +87,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|max:225',
+            'name' => 'required|max:225|unique:products',
             'price' => 'required',
             'stok' => 'required',
             'image' => 'mimes:png,jpg',
