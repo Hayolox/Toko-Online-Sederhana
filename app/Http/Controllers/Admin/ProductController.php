@@ -86,15 +86,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $item = product::findOrFail($id);
         $request->validate([
-            'name' => 'required|max:225|unique:products',
+            'name' => 'required|max:225|unique:products,name,'.$item->id,
             'price' => 'required',
             'stok' => 'required',
             'image' => 'mimes:png,jpg',
             'desctiption' => 'required',
         ]);
         $aatr = $request->all();
-        $item = product::findOrFail($id);
         if($request->file('image')){
             Storage::disk('local')->delete('public/'. $item->image);
             $aatr['image'] = $request->file('image')->store('asset/product', 'public');
