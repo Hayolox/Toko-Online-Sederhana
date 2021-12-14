@@ -34,22 +34,22 @@
 
                         <div class="form-group">
                             <label for="name">Nama Obat</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name">
+                            <input type="text" name="name" placeholder="Wajib Diisi *" value="{{ old('name') }}" class="form-control" id="name">
                         </div>
 
                         <div class="form-group">
                             <label for="stok">Stok Obat</label>
-                            <input type="number" name="stok" value="{{ old('stok') }}" class="form-control" id="stok">
+                            <input type="number" name="stok"  placeholder="Wajib Diisi *" value="{{ old('stok') }}" class="form-control" id="stok">
                         </div>
 
                         <div class="form-group">
                             <label for="price">Harga Obat</label>
-                            <input type="number" name="price" value="{{ old('price') }}" class="form-control" id="price">
+                            <input type="number" name="price"  placeholder="Wajib Diisi *" value="{{ old('price') }}" class="form-control" id="price">
                         </div>
 
                         <div class="form-group mt-2">
                             <label for="desctiption">Diskripsi Obat</label>
-                            <textarea class="form-control" id="editor" name="desctiption" rows="3">{{ old('desctiption') }}</textarea>
+                            <textarea class="form-control"  placeholder="Wajib Diisi *" id="editor" name="desctiption" rows="3">{{ old('desctiption') }}</textarea>
                         </div>
 
 

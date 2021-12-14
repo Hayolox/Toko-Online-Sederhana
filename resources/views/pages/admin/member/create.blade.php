@@ -30,17 +30,17 @@
 
                         <div class="form-group">
                             <label for="name">Nama Member</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name">
+                            <input type="text" name="name"  placeholder="Wajib Diisi *" value="{{ old('name') }}" class="form-control" id="name">
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" name="email" value="{{ old('email') }}" class="form-control" id="email">
+                            <input type="text" name="email"  placeholder="Wajib Diisi *" value="{{ old('email') }}" class="form-control" id="email">
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" value="{{ old('password') }}" class="form-control" id="password">
+                            <input type="password"  placeholder="Wajib Diisi *" name="password" value="{{ old('password') }}" class="form-control" id="password">
                         </div>
 
 
