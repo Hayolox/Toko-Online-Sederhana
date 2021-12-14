@@ -7,6 +7,7 @@ use App\Models\product;
 use App\Models\transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
@@ -50,15 +51,41 @@ class TransactionController extends Controller
         return back()->withToastSuccess('Transaksi Dibatalkan');
     }
 
-    public function transaksisukses()
+    public function transaksisukses( Request $request)
     {
-        $transactions = transaction::with(['user'])->where('transaction_status', 'SUKSES')->paginate(10);
+        if($request->has('search')){
+            $transactions = DB::table('users')
+            ->join('transactions', 'users.id', '=', 'transactions.user_id')
+            ->select('users.name', 'transactions.*')
+            ->where('transactions.transaction_status', 'SUKSES')
+            ->where('users.name', 'LIKE', '%' .$request->search. '%')
+            ->paginate(10);
+        }else{
+            $transactions = DB::table('users')
+            ->join('transactions', 'users.id', '=', 'transactions.user_id')
+            ->where('transactions.transaction_status', 'SUKSES')
+            ->select('users.name', 'transactions.*')
+            ->paginate(10);
+        };
         return view('pages.admin.transactionsukses.index', compact('transactions'));
     }
 
-    public function transaksigagal()
+    public function transaksigagal(Request $request)
     {
-        $transactions = transaction::with(['user'])->where('transaction_status', 'BATAL')->paginate(10);
+        if($request->has('search')){
+            $transactions = DB::table('users')
+            ->join('transactions', 'users.id', '=', 'transactions.user_id')
+            ->select('users.name', 'transactions.*')
+            ->where('transactions.transaction_status', 'BATAL')
+            ->where('users.name', 'LIKE', '%' .$request->search. '%')
+            ->paginate(10);
+        }else{
+            $transactions = DB::table('users')
+            ->join('transactions', 'users.id', '=', 'transactions.user_id')
+            ->where('transactions.transaction_status', 'BATAL')
+            ->select('users.name', 'transactions.*')
+            ->paginate(10);
+        };
         return view('pages.admin.transactiongagal.index', compact('transactions'));
     }
 }
