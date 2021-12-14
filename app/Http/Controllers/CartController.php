@@ -35,6 +35,7 @@ class CartController extends Controller
             TransactionDetail::create([
                 'transaction_id' => $transaction->id,
                 'product_id' => $cart->product->id,
+                'qty' => $cart->qty,
                 'price' => $cart->product->price,
             ]);
         }
@@ -48,7 +49,7 @@ class CartController extends Controller
     {
         $item = cart::findOrFail($id);
         $product = product::where('id', $item->product->id)->firstOrFail();
-        $stok = $product->stok + 1;
+        $stok = $product->stok + $item->qty;
         $product->update([
             'stok' => $stok,
         ]);

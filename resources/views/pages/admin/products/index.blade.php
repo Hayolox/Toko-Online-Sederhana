@@ -3,12 +3,12 @@
    <!-- Begin Page Content -->
    <div class="container-fluid">
 
-    
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Produk</h6>
         </div>
         <div class="card-body">
             <div class="col-12 mb-3 d-flex">
@@ -36,16 +36,16 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    
+
                     @foreach ($products as $data => $item)
-                    <tbody>  
+                    <tbody>
                         <td>{{ $products->firstItem() + $data }}</td>
                         <td>
                             <img src="{{ Storage::url($item->image) }}" style="height: 100px" alt="product">
                         </td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->stok }}</td>
-                        <td>{{ $item->price }}</td>
+                        <td class="text-right">{{ $item->stok }}</td>
+                        <td class="text-right">  Rp {{ number_format($item->price, 0, ".", ".") }}</td>
                         <td>
                             <a href="{{ route('Product.edit',$item->id) }}" class="btn btn-info">Edit</a>
                             <form action="{{ route('Product.destroy',$item->id) }}" onclick="return confirm('Yakin Untuk Menghapus?')" class="d-inline" method="POST">
@@ -53,9 +53,9 @@
                                 @method('delete')
                                 <button class="btn btn-danger">Delete</button>
                             </form>
-                        </td> 
+                        </td>
                     </tbody>
-                    @endforeach  
+                    @endforeach
                 </table>
                <div class="d-flex justify-content-center mt-4">
                 {{ $products->links() }}
@@ -66,5 +66,5 @@
 
 </div>
 <!-- /.container-fluid -->
- 
+
 @endsection

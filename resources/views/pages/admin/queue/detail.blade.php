@@ -26,7 +26,9 @@
                                     <th>No</th>
                                     <th>Image</th>
                                     <th>Nama Obat</th>
-                                    <th>Harga</th>
+                                    <th >Quantity</th>
+                                    <th >Harga Satuan</th>
+                                    <th >Total Harga</th>
                                 </tr>
                             </thead>
 
@@ -37,7 +39,9 @@
                                     <img src="{{ Storage::url($item->product->image) }}" style="height: 100px" alt="product">
                                 </td>
                                 <td>{{ $item->product->name }}</td>
-                                <td>Rp {{ number_format($item->product->price, 0, ".", ".") }}</td>
+                                <td class="text-right">{{ $item->qty }}</td>
+                                <td class="text-right">Rp {{ number_format($item->product->price, 0, ".", ".") }}</td>
+                                <td class="text-right">Rp {{ number_format($item->product->price * $item->qty, 0, ".", ".") }}</td>
                             </tbody>
                             @endforeach
                         </table>

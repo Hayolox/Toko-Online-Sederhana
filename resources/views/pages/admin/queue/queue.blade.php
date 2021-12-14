@@ -3,7 +3,7 @@
    <!-- Begin Page Content -->
    <div class="container-fluid">
 
-    
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -19,26 +19,26 @@
                             <th>No</th>
                             <th>Code</th>
                             <th>Nama</th>
-                            <th>Jumlah Di beli</th>
+                            <th>Jumlah Produk</th>
                             <th>Total Harga</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    
+
                     @foreach ($queue as $data => $item)
-                    <tbody>  
+                    <tbody>
                         <td>{{ $queue->firstItem() + $data }}</td>
-                        <td>{{ $item->code }}</td>
+                        <td class="text-right">{{ $item->code }}</td>
                         <td>{{ $item->user->name }}</td>
-                        <td>{{ $item->transactiondetail->count() }}</td>
-                        <td> Rp {{ number_format($item->total_price, 0, ".", ".") }}</td>
+                        <td class="text-right">{{ $item->transactiondetail->count() }}</td>
+                        <td class="text-right"> Rp {{ number_format($item->total_price, 0, ".", ".") }}</td>
                         <td>
                             <a href="{{ route('queue-detail', $item->id) }}" class="btn btn-info">Detail</a>
                             <a href="{{ route('queue-sukses', $item->id) }}" onclick="return confirm('Yakin untuk sukseskan transaksi?')" class="btn btn-primary">Sukses</a>
                             <a href="{{ route('queue-batal', $item->id) }}" onclick="return confirm('Yakin untuk membatalkan transaksi?')" class="btn btn-danger">Batalkan</a>
-                        </td> 
+                        </td>
                     </tbody>
-                    @endforeach  
+                    @endforeach
                 </table>
                <div class="d-flex justify-content-center mt-4">
                 {{ $queue->links() }}
@@ -49,5 +49,5 @@
 
 </div>
 <!-- /.container-fluid -->
- 
+
 @endsection

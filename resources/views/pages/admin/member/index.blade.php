@@ -4,12 +4,12 @@
    <!-- Begin Page Content -->
    <div class="container-fluid">
 
-    
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Member</h6>
         </div>
         <div class="card-body">
             <div class="col-12 mb-3 d-flex">
@@ -35,9 +35,9 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    
+
                     @foreach ($Members as $data => $item)
-                    <tbody>  
+                    <tbody>
                         <td>{{ $Members->firstItem() + $data }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
@@ -48,9 +48,9 @@
                                 @method('delete')
                                 <button class="btn btn-danger">Delete</button>
                             </form>
-                        </td> 
+                        </td>
                     </tbody>
-                    @endforeach  
+                    @endforeach
                 </table>
                <div class="d-flex justify-content-center mt-4">
                 {{ $Members->links() }}
@@ -61,5 +61,5 @@
 
 </div>
 <!-- /.container-fluid -->
- 
+
 @endsection

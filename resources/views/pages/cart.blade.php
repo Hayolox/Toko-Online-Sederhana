@@ -35,7 +35,9 @@
                     <tr>
                       <th scope="col">Image</th>
                       <th scope="col">Nama Obat</th>
-                      <th scope="col">Harga</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Harga Satuan</th>
+                      <th scope="col">Total Harga</th>
                       <th scope="col">Menu</th>
                     </tr>
                   </thead>
@@ -43,27 +45,34 @@
                   @php $totalPrice = 0 @endphp
                    @foreach ($carts as $item)
                    <tr>
-                    <td style="width: 25%;">
+                    <td style="width: 20%;">
                       <img
                         src="{{ Storage::url($item->product->image) }}"
                         alt=""
                         class="cart-image"
                       />
                     </td>
-                    <td style="width: 35%;">
+                    <td style="width: 20%;">
                       <div class="product-title">{{ $item->product->name }}</div>
                     </td>
-                    <td style="width: 35%;">
+                    <td style="width: 20%;">
+                        <div class="product-title">{{ $item->qty }}</div>
+                      </td>
+                    <td style="width: 20%;">
                       <div class="product-title">{{ number_format($item->product->price, 0, ".", ".") }}</div>
                       <div class="product-subtitle">Rupiah</div>
                     </td>
+                    <td style="width: 25%;">
+                        <div class="product-title">{{ number_format($item->product->price * $item->qty, 0, ".", ".") }}</div>
+                        <div class="product-subtitle">Rupiah</div>
+                      </td>
                     <td style="width: 20%;">
                       <a href="{{ route('cart-delete',$item->id) }}" onclick="return confirm('Yakin untuk remove?')" class="btn btn-remove-cart">
                         Remove
                       </a>
                     </td>
                   </tr>
-                  @php $totalPrice += $item->product->price @endphp
+                  @php $totalPrice += $item->product->price * $item->qty @endphp
                    @endforeach
 
                   </tbody>
@@ -85,7 +94,7 @@
               </div>
               <div class="col-4 col-md-2">
                 <div class="product-title text-success">Rp {{ number_format($totalPrice, 0, ".", "." ?? 0) }}</div>
-                <div class="product-subtitle">Total</div>
+                <div class="product-subtitle">Total Pembayaran</div>
               </div>
               <div class="col-8 col-md-3">
                   @if ($count > 0)
